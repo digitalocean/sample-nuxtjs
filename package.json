@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
+    "build": "nuxt build && nuxt export && mv dist _static && (rm _static/README.md || true)",
+    "start": "node sammy.js; serve -s _static -l tcp://0.0.0.0:${PORT:-8080} -n",
     "export": "nuxt export",
     "serve": "nuxt serve"
   },
   "dependencies": {
-    "nuxt": "^2.13.0"
+    "nuxt": "^2.13.0",
+    "serve": "^11.3.2"
   },
   "devDependencies": {}
 }
