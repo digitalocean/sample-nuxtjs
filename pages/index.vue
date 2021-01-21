@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue';
 import { mapMutations } from 'vuex';
 import { mapActions } from 'vuex';
 
