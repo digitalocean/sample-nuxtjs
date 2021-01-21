@@ -11,6 +11,7 @@
         {{ activeImagePath }}
       </pre>
       <grid :items="media" />
+      <session />
 
       <!-- Active Template: {{ activeTemplate }}
 
@@ -63,11 +64,6 @@ export default {
     this.setRandomTemplate();
   },
   methods: {
-    next() {
-      this.nextQuestion();
-      this.setRandomTemplate();
-    },
-
     ...mapActions({
       getFolders: "media/getFolders",
       setRandomTemplate: "templates/setRandomTemplate"

@@ -9,7 +9,7 @@
         <!-- {{ i.filename }} -->
         <button 
           :disabled="mediaStatus.id === 1" 
-          @click="next">
+          @click="next(i)">
           <img :src="i.url" >
         </button>
       </div>
@@ -55,7 +55,11 @@ export default {
     }
   },
   methods: {
-    next() {
+    next(item) {
+      this.saveItemToSession({
+        filename: item.filename,
+        question: this.question.text
+      });
       this.nextQuestion();
       this.setRandomTemplate();
     },
@@ -73,7 +77,8 @@ export default {
     ...mapMutations({
       getRandomMedia: "media/getMedia",
       setUsedQuestion: "questions/setUsed",
-      setNextQuestion: "questions/setNextQuestion"
+      setNextQuestion: "questions/setNextQuestion",
+      saveItemToSession: "session/saveItemToSession"
     })
     // ...mapMutations({
     //   getRandomMedia: 'media/getRandom'
