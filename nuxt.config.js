@@ -45,7 +45,7 @@ module.exports = {
    ** Axios module configuration
    */
   axios: {
-    baseURL: 'https://nalatenschap-do-hfuai.ondigitalocean.app', // Used as fallback if no runtime config is provided
+    baseURL: 'http://localhost:3000', // Used as fallback if no runtime config is provided
   },
 
   publicRuntimeConfig: {
@@ -55,7 +55,7 @@ module.exports = {
   },
   proxy: {
     '/api': {
-      target: 'http://example.com',
+      target: 'https://nalatenschap-do-hfuai.ondigitalocean.app',
       pathRewrite: {
         '^/api': '/',
       },
