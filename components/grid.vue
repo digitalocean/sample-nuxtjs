@@ -1,57 +1,35 @@
-<!-- 1. Get template at random -->
-<!-- 2. Get images with max items from template -->
-<!-- 3. Get Question -->
 <template>
-  <section class="container">
-
-    <div>
-      <pre>{{ question }} </pre>
-      <pre><h1>{{ question.text }}</h1></pre>
-
-
-      <pre>
-        {{ activeImagePath }}
-      </pre>
-      <!-- <button
-        :disabled="mediaStatus.id === 1"
-        @click="next">
-        Get next Question
-      </button> -->
-      <grid :items="media"/>
-      <!-- <p>
-        {{ question.text }}
-      </p>
-
-      <img src="temp/fotografie en eigen werk/GANSBERG KOEKELHOREN/POST-O-MATIC - FOTO'S - 2020/2048/SKM_C36820081716460.jpeg">
-      <p
-        v-for="(p, key) in media"
-        :key="'text'+key"
-      >
-        {{ key }} : {{ p }}
-      </p>
+  <div>
+    <div
+      v-if="items"
+      class="pmcp-grid">
       <div
-        v-for="(p, key) in media"
-        :key="key">
+        v-for="(i, key) in items"
+        :key="key"
 
-        <media-item :item="p"/>
+      >
+        <!-- {{ i.filename }} -->
+        <button
+          :disabled="mediaStatus.id === 1"
+          @click="next">
+          <img :src="i.url">
+        </button>
 
       </div>
-      Active Template: {{ activeTemplate }}
-
-      <LazyTemplateOne v-if="activeTemplate === 1" />
-      <LazyTemplateTwo v-if="activeTemplate === 2" /> -->
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 import { mapMutations } from 'vuex'
 import { mapActions } from 'vuex'
 
 export default {
-  components: {
-    Logo
+  props: {
+    items: {
+      type: Array,
+      default: null
+    }
   },
   computed: {
     activeTemplate() {
@@ -72,21 +50,10 @@ export default {
       return this.$store.state.questions.list.filter(item => !item.used)
     },
     question() {
-      console.log(
-        this.availableQuestions.length,
-        this.$store.state.questions.activeQuestion
-      )
       if (this.availableQuestions.length === 0)
         return 'Ik heb geen vragen meer.'
       return this.availableQuestions[this.$store.state.questions.activeQuestion]
     }
-  },
-  // async fetch() {
-  //   this.setRandomTemplate()
-  // },
-  // fetchOnServer: true,
-  mounted() {
-    this.setRandomTemplate()
   },
   methods: {
     next() {
@@ -102,7 +69,7 @@ export default {
       if (this.availableQuestions.length === 0) return
       const activeQuestion = this.$store.state.questions.activeQuestion
       this.setUsedQuestion(activeQuestion)
-      this.setNextQuestion(this.availableQuestions.length)
+      this.setNextQuestion(this.availableQuestions.length - 1)
     },
     ...mapMutations({
       getRandomMedia: 'media/getMedia',
@@ -113,6 +80,17 @@ export default {
     //   getRandomMedia: 'media/getRandom'
     // })
   }
-  // middleware: 'webdav'
 }
 </script>
+
+<style scoped>
+.pmcp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* This is better for small screens, once min() is better supported */
+  /* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
+  grid-gap: 1rem;
+  /* This is the standardized property now, but has slightly less support */
+  /* gap: 1rem */
+}
+</style>

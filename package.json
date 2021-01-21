@@ -1,6 +1,8 @@
 {
-  "name": "sample-nuxtjs",
-  "version": "1.0.0",
+  "name": "nalatenschap",
+  "version": "0.1.0",
+  "description": "Het Nalatenschap van Kasper Demeulemeester",
+  "author": "Maarten Lauwaert",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -10,8 +12,27 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
-    "nuxt": "^2.13.0",
-    "serve": "^11.3.2"
+    "nuxt": "^2.0.0",
+    "serve": "^11.3.2",
+    "@nuxtjs/axios": "^5.0.0",
+    "cross-env": "^5.2.0",
+    "file-system": "^2.2.2",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.20",
+    "mkdirp": "^1.0.4",
+    "webdav": "^3.6.2",
+    "webdav-fs": "^3.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "babel-eslint": "^8.2.1",
+    "eslint": "^5.0.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-vue": "^4.0.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "2.6.2",
+    "prettier": "1.14.3",
+    "autoprefixer": "^8.6.4",
+    "tailwindcss": "~0.6.6"
+  }
 }
