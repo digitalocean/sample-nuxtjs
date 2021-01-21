@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
-import { mapActions } from 'vuex';
+import { mapMutations } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   computed: {
@@ -41,7 +41,7 @@ export default {
       ];
     },
     availableQuestions() {
-      return this.$store.state.questions.list.filter((item) => !item.used);
+      return this.$store.state.questions.list.filter(item => !item.used);
     },
     question() {
       console.log(
@@ -49,11 +49,11 @@ export default {
         this.$store.state.questions.activeQuestion
       );
       if (this.availableQuestions.length === 0)
-        return 'Ik heb geen vragen meer.';
+        return "Ik heb geen vragen meer.";
       return this.availableQuestions[
         this.$store.state.questions.activeQuestion
       ];
-    },
+    }
   },
   // async fetch() {
   //   this.setRandomTemplate()
@@ -69,8 +69,8 @@ export default {
     },
 
     ...mapActions({
-      getFolders: 'media/getFolders',
-      setRandomTemplate: 'templates/setRandomTemplate',
+      getFolders: "media/getFolders",
+      setRandomTemplate: "templates/setRandomTemplate"
     }),
     nextQuestion() {
       if (this.availableQuestions.length === 0) return;
@@ -79,14 +79,14 @@ export default {
       this.setNextQuestion(this.availableQuestions.length);
     },
     ...mapMutations({
-      getRandomMedia: 'media/getMedia',
-      setUsedQuestion: 'questions/setUsed',
-      setNextQuestion: 'questions/setNextQuestion',
-    }),
+      getRandomMedia: "media/getMedia",
+      setUsedQuestion: "questions/setUsed",
+      setNextQuestion: "questions/setNextQuestion"
+    })
     // ...mapMutations({
     //   getRandomMedia: 'media/getRandom'
     // })
-  },
+  }
   // middleware: 'webdav'
 };
 </script>

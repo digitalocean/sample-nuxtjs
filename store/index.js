@@ -1,4 +1,4 @@
-const { checkFolder } = require('../plugins/webdav.js')
+const { checkFolder } = require("../plugins/webdav.js");
 
 export const actions = {
   // This async function runs once before serving up the pages. We get the folder paths, and put it in an object, in the media state.
@@ -27,4 +27,4 @@ export const actions = {
   //
   //     // commit('media/setFolders', arrangedFolders)
   //   }
-}
+};
