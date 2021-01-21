@@ -45,7 +45,7 @@ module.exports = {
    ** Axios module configuration
    */
   axios: {
-    baseURL: 'http://localhost:3000', // Used as fallback if no runtime config is provided
+    baseURL: 'https://nalatenschap-do-hfuai.ondigitalocean.app', // Used as fallback if no runtime config is provided
   },
 
   publicRuntimeConfig: {
