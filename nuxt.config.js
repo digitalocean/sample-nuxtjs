@@ -39,6 +39,7 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
   ],
   /*
    ** Axios module configuration
@@ -50,6 +51,14 @@ module.exports = {
   publicRuntimeConfig: {
     axios: {
       browserBaseURL: process.env.BROWSER_BASE_URL,
+    },
+  },
+  proxy: {
+    '/api': {
+      target: 'http://example.com',
+      pathRewrite: {
+        '^/api': '/',
+      },
     },
   },
 

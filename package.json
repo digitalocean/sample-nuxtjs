@@ -12,14 +12,15 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
-    "serve": "^11.3.2",
     "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/proxy": "^2.1.0",
     "cross-env": "^5.2.0",
     "file-system": "^2.2.2",
     "fs": "0.0.1-security",
     "lodash": "^4.17.20",
     "mkdirp": "^1.0.4",
+    "nuxt": "^2.0.0",
+    "serve": "^11.3.2",
     "webdav": "^3.6.2",
     "webdav-fs": "^3.0.0"
   },
