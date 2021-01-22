@@ -48,7 +48,8 @@ module.exports = {
    ** Axios module configuration
    */
   axios: {
-    baseURL: process.env.BROWSER_BASE_URL, // Used as fallback if no runtime config is provided
+    baseURL: 'https://nalatenschap-do-hfuai.ondigitalocean.app/api/',
+    // baseURL: process.env.BROWSER_BASE_URL, // Used as fallback if no runtime config is provided
     proxyHeaders: true,
     credentials: true,
   },
