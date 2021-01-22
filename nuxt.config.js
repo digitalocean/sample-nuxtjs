@@ -55,14 +55,18 @@ module.exports = {
   //     browserBaseURL: process.env.BROWSER_BASE_URL,
   //   },
   // },
-  // proxy: {
-  //   '/api': {
-  //     target: 'https://nalatenschap-do-hfuai.ondigitalocean.app',
-  //     pathRewrite: {
-  //       '^/api': '/',
-  //     },
-  //   },
-  // },
+  proxy: {
+    proxy: {
+      '/api/': 'https://nalatenschap-do-hfuai.ondigitalocean.app',
+
+    }
+    '/api': {
+      target: 'https://nalatenschap-do-hfuai.ondigitalocean.app',
+      pathRewrite: {
+        '^/api': '/',
+      },
+    },
+  },
 
   /*
    ** Build configuration
