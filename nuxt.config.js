@@ -23,7 +23,7 @@ module.exports = {
   loading: { color: '#fff' },
 
   serverMiddleware: {
-    '/api': '~/api',
+    '/api': '~/api/',
   },
 
   /*
@@ -58,9 +58,9 @@ module.exports = {
   //     browserBaseURL: process.env.BROWSER_BASE_URL,
   //   },
   // },
-  proxy: {
-    '/api/': 'https://nalatenschap-do-hfuai.ondigitalocean.app/api',
-  },
+  // proxy: {
+  //   '/api/': 'https://nalatenschap-do-hfuai.ondigitalocean.app/api',
+  // },
 
   /*
    ** Build configuration
