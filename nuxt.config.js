@@ -56,11 +56,7 @@ module.exports = {
   //   },
   // },
   proxy: {
-    proxy: {
-      '/api/': 'https://nalatenschap-do-hfuai.ondigitalocean.app/api',
-    }
-
-    },
+    '/api/': 'https://nalatenschap-do-hfuai.ondigitalocean.app/api',
   },
 
   /*
