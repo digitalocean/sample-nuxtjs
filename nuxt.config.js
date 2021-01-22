@@ -93,7 +93,6 @@ module.exports = {
           },
         });
       }
-      vendor: ['axios'];
       // Need this to make fs work (for the webdav things)
       config.node = {
         fs: 'empty',
