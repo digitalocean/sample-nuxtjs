@@ -47,11 +47,22 @@ module.exports = {
   /*
    ** Axios module configuration
    */
+
   axios: {
-    // baseURL: 'https://nalatenschap-do-hfuai.ondigitalocean.app/',
-    // baseURL: process.env.BROWSER_BASE_URL, // Used as fallback if no runtime config is provided
-    proxyHeaders: true,
+    // See https://github.com/nuxt-community/axios-module#options
+    baseURL: 'https://nalatenschap-do-hfuai.ondigitalocean.app/',
     credentials: true,
+    proxy: false,
+    debug: true,
+    retry: {
+      retries: 3,
+    },
+    requestInterceptor: (config, { store }) => {
+      config.headers.common['Authorization'] = '';
+      config.headers.common['Content-Type'] =
+        'application/x-www-form-urlencoded;application/json';
+      return config;
+    },
   },
 
   // publicRuntimeConfig: {
@@ -84,6 +95,7 @@ module.exports = {
           },
         });
       }
+      vendor: ['axios'];
       // Need this to make fs work (for the webdav things)
       config.node = {
         fs: 'empty',
