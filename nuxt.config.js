@@ -48,7 +48,7 @@ module.exports = {
 
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: 'https://nalatenschap-do-hfuai.ondigitalocean.app/',
+    // baseURL: 'https://nalatenschap-do-hfuai.ondigitalocean.app/',
     credentials: true,
     proxy: false,
     debug: true,
