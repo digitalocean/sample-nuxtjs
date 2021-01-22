@@ -43,6 +43,10 @@ function splitPath(path) {
   }
 }
 
+app.get('/test', async (req, res) => {
+  res.end('Everything ok!');
+});
+
 app.get('/getDirectoryItems', async (req, res) => {
   const path = req.query.path;
   // const images = await client.getDirectoryContents("/", { deep: true, glob: "/**/*.{png,jpg,gif}" });
