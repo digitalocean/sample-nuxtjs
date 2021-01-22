@@ -46,6 +46,8 @@ module.exports = {
    */
   axios: {
     baseURL: process.env.BROWSER_BASE_URL, // Used as fallback if no runtime config is provided
+    proxyHeaders: true,
+    credentials: true,
   },
 
   // publicRuntimeConfig: {
