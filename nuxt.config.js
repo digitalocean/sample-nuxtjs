@@ -22,9 +22,7 @@ module.exports = {
    */
   loading: { color: '#fff' },
 
-  serverMiddleware: {
-    '/api': '~/api/',
-  },
+  serverMiddleware: ['~/api/index.js'],
 
   /*
    ** Global CSS
