@@ -24,8 +24,8 @@ module.exports = {
 
   serverMiddleware: [
     // 'redirect-ssl',
-    // { path: '/api', handler: '~/api/index.js' }],
-    { path: '/server-middleware', handler: '~/server-middleware/index.js' },
+    { path: '/api', handler: '~/api/index.js' },
+    // { path: '/server-middleware', handler: '~/server-middleware/index.js' },
   ],
 
   /*
@@ -42,6 +42,7 @@ module.exports = {
    ** Nuxt.js modules
    */
   modules: [
+    ['vue-scrollto/nuxt', { duration: 300 }],
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     // '@nuxtjs/proxy',

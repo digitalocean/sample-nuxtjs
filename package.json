@@ -22,6 +22,7 @@
     "nuxt": "^2.0.0",
     "redirect-ssl": "^2.0.0",
     "serve": "^11.3.2",
+    "vue-scrollto": "^2.20.0",
     "webdav": "^3.6.2",
     "webdav-fs": "^3.0.0"
   },

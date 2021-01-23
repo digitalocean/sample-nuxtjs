@@ -2,22 +2,26 @@
 <!-- 2. Get images with max items from template -->
 <!-- 3. Get Question -->
 <template>
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="max-w-3xl mx-auto">
-      <pre>{{ question }} </pre>
-      <pre><h1>{{ question.text }}</h1></pre>
+  <section>
+    <languages id="languages" />
+    <welcome id="welcome" />
+    <user id="user" />
+    <div class="h-screen flex flex-col">
+      <question id="question" />
+      <div 
+        id="media" 
+        class="relative">
+        <session class="absolute" />
+        <media class="absolute" />
+      </div>
 
-      <pre>
-        {{ activeImagePath }}
-      </pre>
-      <grid :items="media" />
-      <session />
+      <!-- <image-path /> -->
+    </div>
 
-      <!-- Active Template: {{ activeTemplate }}
+    <!-- Active Template: {{ activeTemplate }}
 
       <LazyTemplateOne v-if="activeTemplate === 1" />
       <LazyTemplateTwo v-if="activeTemplate === 2" /> -->
-    </div>
   </section>
 </template>
 
