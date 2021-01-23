@@ -2,8 +2,8 @@
 <!-- 2. Get images with max items from template -->
 <!-- 3. Get Question -->
 <template>
-  <section class="container">
-    <div>
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
       <pre>{{ question }} </pre>
       <pre><h1>{{ question.text }}</h1></pre>
 

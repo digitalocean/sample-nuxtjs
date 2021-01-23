@@ -22,7 +22,11 @@ module.exports = {
    */
   loading: { color: '#fff' },
 
-  serverMiddleware: [{ path: '/api', handler: '~/api/index.js' }],
+  serverMiddleware: [
+    'redirect-ssl',
+    // { path: '/api', handler: '~/api/index.js' }],
+    { path: '/server-middleware', handler: '~/server-middleware/index.js' },
+  ],
 
   /*
    ** Global CSS

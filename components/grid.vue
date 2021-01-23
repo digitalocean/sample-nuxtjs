@@ -6,7 +6,7 @@
       <div 
         v-for="(i, key) in items" 
         :key="key">
-        <!-- {{ i.filename }} -->
+        <!-- {{ i.filename }} -->??
         <button 
           :disabled="mediaStatus.id === 1" 
           @click="next(i)">
@@ -54,6 +54,7 @@ export default {
       ];
     }
   },
+
   methods: {
     next(item) {
       this.saveItemToSession({
