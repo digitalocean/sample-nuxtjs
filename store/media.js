@@ -41,7 +41,7 @@ export const mutations = {
 
 export const actions = {
   async getMedia({ state, commit }, { total: total }) {
-    console.log("Starting to get media");
+    // console.log("Starting to get media");
     commit("setStatus", 1);
     console.log("getting media with a total of", total);
     // Empty media first
@@ -77,7 +77,11 @@ export const actions = {
       });
       // console.log('test with state', state)
       // console.log('the downloadLink we got back from server', res.data)
+
+      // IF this file is a text file, we want to add the first sentence to the file object
+
       const updatedFile = { ...file, url: res.data };
+
       commit("setActivePath", updatedFile.filename);
       commit("add", updatedFile);
       console.log("going through media", i, total - 1);

@@ -63,6 +63,8 @@ app.get('/getFile', async (req, res) => {
   const pathArray = splitPath(path);
   // console.log('sending to downloadFile', path)
   await downloadFile(pathArray[0], pathArray[1], pathArray[2]);
+  // console.log('check if text file, if so, add first line to the object')
+
   // console.log('WHY THIS NO WORK?', downloaded)
   res.send(pathArray[2]);
 });

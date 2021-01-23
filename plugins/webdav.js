@@ -18,8 +18,8 @@ async function getDirectoryItems(directory) {
 
 async function getDirectoryMedia(path) {
   const contents = await client.getDirectoryContents(path, {
-    deep: true,
-    glob: "/**/*.{png,jpg}"
+    deep: true
+    // glob: "/**/*.{png,jpg}"
   });
   // console.log('The contents we got', contents)
   return contents;

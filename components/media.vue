@@ -8,7 +8,13 @@
       <button 
         :disabled="mediaStatus.id === 1" 
         @click="next(i)">
-        <img :src="i.url" >
+        {{ i }}
+        <div v-if="i.mime === 'text/plain'" />
+        <div 
+          v-else 
+          class="filtered blue">
+          <img :src="i.url" >
+        </div>
       </button>
     </div>
   </div>
@@ -112,5 +118,37 @@ export default {
 .pmcp-grid > *:first-child {
   grid-row: 1 / 1;
   grid-column: 1 / 1;
+}
+
+/* test for template */
+.blue {
+  background: #23427b;
+}
+.red {
+  background: #d02631;
+}
+
+.filtered img {
+  width: auto;
+  /* background-blend-mode: screen; */
+  mix-blend-mode: screen;
+  filter: grayscale(100%) contrast(800%);
+  opacity: 1;
+  margin-bottom: -6px;
+}
+
+.item {
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+.blend {
+  background-blend-mode: screen;
+}
+
+.item {
+  background-image: url(https://unsplash.it/g/500/500?random);
+  background-color: rgba(237, 190, 0, 0.85);
 }
 </style>

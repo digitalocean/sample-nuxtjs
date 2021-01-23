@@ -11,18 +11,17 @@ export default {
   props: {
     item: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     imageUrl() {
       // if (!this.item) return
       // if (this.item.mime.includes('image'))
-      return require(`~/static/${this.item.url}`)
-    }
-  }
-}
+      return require(`~/static/${this.item.url}`);
+    },
+  },
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

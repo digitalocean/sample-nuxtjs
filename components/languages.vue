@@ -59,6 +59,13 @@ export default {
   grid-gap: 1rem;
 }
 
+@media only screen and (max-width: 850px) {
+  .pmcp-grid {
+    grid-template-columns: repeat(auto-fill, minmax(calc(8em - 2rem), 1fr));
+    grid-gap: 1em;
+  }
+}
+
 .pmcp-grid::before {
   content: "";
   width: 0;

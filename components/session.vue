@@ -3,7 +3,7 @@
     <pre 
       class="text-xl font-bold" 
       style="white-space: pre-wrap">
-      {{ session }}
+      <span style="background-color:red;">{{ session }}</span>
     </pre>
   </div>
 </template>
