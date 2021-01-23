@@ -14,9 +14,9 @@
         <session class="absolute" />
         <media class="absolute" />
       </div>
-
       <!-- <image-path /> -->
     </div>
+    <finish />
 
     <!-- Active Template: {{ activeTemplate }}
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header(
     'Access-Control-Allow-Origin',
     'https://nalatenschap-do-hfuai.ondigitalocean.app'
@@ -19,6 +19,7 @@ const {
   getDownloadUrl,
   downloadFile,
   checkFolder,
+  sendSession,
 } = require('../plugins/webdav.js');
 
 // Move to helper library
@@ -70,9 +71,20 @@ app.get('/checkFolder', async (req, res) => {
   const path = req.query.path;
   // const images = await client.getDirectoryContents("/", { deep: true, glob: "/**/*.{png,jpg,gif}" });
   let items = await checkFolder(path);
-  console.log('At API now, got items', items);
+  // console.log('At API now, got items', items);
   // console.log('all items in folder', items)
   res.send(items);
+});
+
+app.get('/sendSession', async (req, res) => {
+  // console.log(req.query);
+  console.log(req.query.session);
+  const session = JSON.parse(req.query.session);
+  const user = JSON.parse(req.query.user);
+  let sessionSend = await sendSession(user, session);
+  console.log('sendSession', sessionSend);
+
+  res.send(sessionSend);
 });
 
 module.exports = {

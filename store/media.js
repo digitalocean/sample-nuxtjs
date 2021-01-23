@@ -63,9 +63,9 @@ export const actions = {
 
     for (let i = 0; i < total; i++) {
       // get a random image
-      const itemId = random(0, items.length);
+      const itemId = random(0, items.length - 1);
       // console.log(itemId, items, items.length)
-      const file = items[itemId - 1];
+      const file = items[itemId];
       // remove image from list
       console.log(items, itemId);
       console.log("the file", file);

@@ -39,7 +39,7 @@ export default {
       this.$scrollTo("#welcome");
     },
     ...mapMutations({
-      setActiveLanguage: "media/setActive"
+      setActiveLanguage: "languages/setActive"
     })
   }
 };

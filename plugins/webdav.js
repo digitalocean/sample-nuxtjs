@@ -11,7 +11,7 @@ const client = createClient(
 );
 
 async function getDirectoryItems(directory) {
-  console.log("at webdav.js, getDirectoryItems, this is directory", directory);
+  // console.log("at webdav.js, getDirectoryItems, this is directory", directory);
   const contents = await client.getDirectoryContents(directory);
   return contents;
 }
@@ -27,7 +27,7 @@ async function getDirectoryMedia(path) {
 
 async function getDownloadUrl(path) {
   const url = await client.getFileDownloadLink(path);
-  console.log("here we are with the url", url);
+  // console.log("here we are with the url", url);
   return url;
 }
 
@@ -56,16 +56,16 @@ function splitPath(path) {
 async function checkFolder(directory, goUpOne = false) {
   // return directory
   // Get directory content
-  console.log("THE DIRECTORY WE ARE WORKING WITH", directory);
+  // console.log("THE DIRECTORY WE ARE WORKING WITH", directory);
   // IMPLEMENT THE goUPONE flow, see line 112
-  console.log("go one up?", goUpOne);
+  // console.log("go one up?", goUpOne);
   if (goUpOne) {
     const oneUp = splitPath(directory)[1];
-    console.log("should be going up one", { directory }, { oneUp });
+    // console.log("should be going up one", { directory }, { oneUp });
     if (oneUp != "/fotografie en eigen werk") {
       // return
-      console.log("not at the highest level yet");
-      console.log("going up one, so directory is now", oneUp);
+      // console.log("not at the highest level yet");
+      // console.log("going up one, so directory is now", oneUp);
       directory = oneUp;
     }
   }
@@ -88,28 +88,28 @@ async function checkFolder(directory, goUpOne = false) {
 
   // Filter out the folder we come from, if we are going up one
   if (goUpOne) {
-    console.log(
-      "we went up one, so taking out the folder we were, so we dont go inside the same one",
-      directory,
-      directoryContent.length,
-      directoryContent
-    );
+    // console.log(
+    //   "we went up one, so taking out the folder we were, so we dont go inside the same one",
+    //   directory,
+    //   directoryContent.length,
+    //   directoryContent
+    // );
     directoryContent = directoryContent.filter(d => d.filename != directory);
   }
   const onlyDirectories = directoryContent.filter(d => d.type == "directory");
-  console.log("there are directories here", onlyDirectories.length);
+  // console.log("there are directories here", onlyDirectories.length);
   // if there are no directories in this directory, we have to go up one, and retry (but not this one)
   if (onlyDirectories.length == 0) {
-    console.log("going in no directory flow with directory", directory);
+    // console.log("going in no directory flow with directory", directory);
     // TODO: Now i go all the way back up, would be better to go to one higher
     // console.log()
     const pathArray = splitPath(directory);
-    console.log(pathArray);
-    console.log("sending to downloadFile", pathArray[1]);
+    // console.log(pathArray);
+    // console.log("sending to downloadFile", pathArray[1]);
 
     // TODO: He keeps on being in this loop inside same folder. If none of them have a folder called 2048, move one higher
     return checkFolder(pathArray[1], true);
-    console.log("There are no directories in this directory");
+    // console.log("There are no directories in this directory");
   }
 
   // If there are directories, find one called 2048
@@ -117,7 +117,7 @@ async function checkFolder(directory, goUpOne = false) {
     // console.log('checking for basename', d)
     if (d.basename == "2048") return d;
   });
-  console.log("these are the directories called 2048", only2048.length);
+  // console.log("these are the directories called 2048", only2048.length);
   // If there is no directory called 2048, grab a random directory, and run CheckForFolder again
   if (only2048.length == 0) {
     // console.log(
@@ -139,7 +139,7 @@ async function checkFolder(directory, goUpOne = false) {
   // If this is the right folder, get contents and download
   // console.log('the 2048 folder we want to check', only2048[0].)
   const content2048 = await getDirectoryItems(only2048[0].filename);
-  console.log("This is the inside of the 2048 folder", content2048);
+  // console.log("This is the inside of the 2048 folder", content2048);
   return content2048;
 }
 
@@ -151,10 +151,49 @@ async function downloadFile(fullPath, directory, fileName) {
   });
 }
 
+async function writeFile(path, content) {
+  // writeFile function with filename, content and callback function
+  fs.writeFile(path, content, function(err) {
+    if (err) throw err;
+    console.log("File is created successfully.");
+    return;
+  });
+}
+
+async function sendSession(user, session) {
+  // TODO: Add language
+  return new Promise((resolve, reject) => {
+    console.log(user.first, user.last, session);
+    const fileName = user.first + "_" + user.last + "_" + Date.now() + ".txt";
+
+    // Create the text file
+    let content = "";
+    for (let i = 0; i < session.length; i++) {
+      content +=
+        i + ". " + session[i].question + "\n" + session[i].answer + "\n" + "\n";
+    }
+
+    const localPath = "./sessions/" + fileName;
+    console.log(
+      `Creating a local file with path ${localPath} & items:`,
+      session
+    );
+
+    let writeLocally = writeFile(localPath, content);
+    const writeRemote = client.createWriteStream(
+      "/fotografie en eigen werk/Nalatenschap Inzendingen/" + fileName
+    );
+    fs.createReadStream(localPath).pipe(writeRemote);
+    writeRemote.on("finish", resolve);
+  });
+}
+
 export {
   getDirectoryItems,
   checkFolder,
   getDirectoryMedia,
   getDownloadUrl,
-  downloadFile
+  downloadFile,
+  sendSession
 };
+//
