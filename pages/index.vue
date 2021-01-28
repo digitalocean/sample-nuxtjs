@@ -1,73 +1,92 @@
+<!-- 1. Get template at random -->
+<!-- 2. Get images with max items from template -->
+<!-- 3. Get Question -->
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        Welcome to Nuxt.js
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <section>
+    <languages id="languages" />
+    <welcome id="welcome" />
+    <user id="user" />
+    <div class="h-screen flex flex-col">
+      <question id="question" />
+      <div 
+        id="media" 
+        class="relative">
+        <session class="absolute" />
+        <media class="absolute" />
       </div>
+      <!-- <image-path /> -->
     </div>
-  </div>
+    <finish />
+
+    <!-- Active Template: {{ activeTemplate }}
+
+      <LazyTemplateOne v-if="activeTemplate === 1" />
+      <LazyTemplateTwo v-if="activeTemplate === 2" /> -->
+  </section>
 </template>
 
 <script>
-export default {}
+import { mapMutations } from "vuex";
+import { mapActions } from "vuex";
+
+export default {
+  computed: {
+    activeTemplate() {
+      return this.$store.state.templates.active;
+    },
+    activeImagePath() {
+      return this.$store.state.media.activePath;
+    },
+    media() {
+      return this.$store.state.media.all;
+    },
+    mediaStatus() {
+      return this.$store.state.media.status[
+        this.$store.state.media.activeStatus
+      ];
+    },
+    availableQuestions() {
+      return this.$store.state.questions.list.filter(item => !item.used);
+    },
+    question() {
+      console.log(
+        this.availableQuestions.length,
+        this.$store.state.questions.activeQuestion
+      );
+      if (this.availableQuestions.length === 0)
+        return "Ik heb geen vragen meer.";
+      return this.availableQuestions[
+        this.$store.state.questions.activeQuestion
+      ];
+    }
+  },
+  // async fetch() {
+  //   this.setRandomTemplate()
+  // },
+  // fetchOnServer: true,
+  mounted() {
+    this.setRandomTemplate();
+  },
+  methods: {
+    ...mapActions({
+      getFolders: "media/getFolders",
+      setRandomTemplate: "templates/setRandomTemplate"
+    }),
+    nextQuestion() {
+      if (this.availableQuestions.length === 0) return;
+      const activeQuestion = this.$store.state.questions.activeQuestion;
+      this.setUsedQuestion(activeQuestion);
+      this.setNextQuestion(this.availableQuestions.length);
+    },
+    ...mapMutations({
+      getRandomMedia: "media/getMedia",
+      setUsedQuestion: "questions/setUsed",
+      setNextQuestion: "questions/setNextQuestion"
+    })
+    // ...mapMutations({
+    //   getRandomMedia: 'media/getRandom'
+    // })
+  }
+  // middleware: 'webdav'
+};
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>

@@ -1,17 +1,41 @@
 {
-  "name": "sample-nuxtjs",
-  "version": "1.0.0",
+  "name": "nalatenschap",
+  "version": "0.1.0",
+  "description": "Het Nalatenschap van Kasper Demeulemeester",
+  "author": "Maarten Lauwaert",
   "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "rm -r _static 2>/dev/null; nuxt build && nuxt export && mv dist _static && (rm _static/README.md || true)",
-    "start": "node sammy.js; serve -s _static -l tcp://0.0.0.0:${PORT:-8080} -n",
+    "start": "node sammy.js; serve -s _static -l tcp://0.0.0.0:${PORT:-3000} -n",
     "export": "nuxt export",
     "serve": "nuxt serve"
   },
   "dependencies": {
-    "nuxt": "^2.13.0",
-    "serve": "^11.3.2"
+    "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/proxy": "^2.1.0",
+    "cross-env": "^5.2.0",
+    "file-system": "^2.2.2",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.20",
+    "mkdirp": "^1.0.4",
+    "nuxt": "^2.0.0",
+    "redirect-ssl": "^2.0.0",
+    "serve": "^11.3.2",
+    "vue-scrollto": "^2.20.0",
+    "webdav": "^3.6.2",
+    "webdav-fs": "^3.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "autoprefixer": "^8.6.4",
+    "babel-eslint": "^8.2.1",
+    "eslint": "^5.0.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-prettier": "2.6.2",
+    "eslint-plugin-vue": "^4.0.0",
+    "nodemon": "^1.11.0",
+    "prettier": "1.14.3",
+    "tailwindcss": "~0.6.6"
+  }
 }
