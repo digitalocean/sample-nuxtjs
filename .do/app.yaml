@@ -5,5 +5,5 @@ services:
   github:
     branch: main
     deploy_on_push: true
-    repo: digitalocean/sample-nuxtjs
+    repo: MyloCarson/sample-nuxtjs
   name: sample-nuxtjs
