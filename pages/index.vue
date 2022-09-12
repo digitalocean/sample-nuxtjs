@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <img src="v2.png"></img>
+      <img src="v2.png">
       <h1 class="title">
         Meh Liebi
       </h1>
