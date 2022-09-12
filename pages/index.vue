@@ -3,7 +3,7 @@
     <div>
       
       <h1 class="title">
-        <img src="v2.png">
+        <img src="./v2.png">
         Meh Liebi
       </h1>
     </div>
