@@ -1,4 +1,5 @@
 <template>
+  <img src="/v2.png" />
   <div class="container">
     <div>
       <img src="/v2.png" />
