@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div>
+      <img src="/v2.png" />
       <nuxt-img src="/v2.png" sizes="sm:100vw md:50vw lg:400px"/>
       <h1 class="title">
       Meh Liebi
