@@ -1,3 +1,6 @@
+> ⚠️ **This repository is archived and kept for reference purposes only.**  
+> It is no longer maintained and will not receive updates or support.
+
 ## Get Started
 
 This guide describes how to use DigitalOcean App Platform to run a sample Nuxt.js application.
