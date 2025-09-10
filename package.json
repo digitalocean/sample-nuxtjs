@@ -2,16 +2,21 @@
   "name": "sample-nuxtjs",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxi dev",
     "build": "rm -r _static 2>/dev/null; nuxi generate && mv .output/public _static && (rm _static/README.md || true)",
-    "start": "node sammy.js; serve -s _static -l tcp://0.0.0.0:${PORT:-8080} -n",
-    "export": "nuxt export",
-    "serve": "nuxt serve"
+    "start": "serve -s _static -l tcp://0.0.0.0:${PORT:-8080} -n",
+    "preview": "nuxi preview",
+    "clean": "rm -rf .nuxt .output node_modules"
   },
   "dependencies": {
     "nuxt": "^4.0.3",
-    "serve": "^14.2.3"
+    "serve": "^14.2.3",
+    "vue": "^3.3.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/node": "^20.8.2",
+    "typescript": "^5.2.2"
+  }
 }
