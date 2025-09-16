@@ -3,11 +3,11 @@
     <div>
       <Logo />
       <h1 class="title">
-        Welcome to Nuxt.js
+        Welcome to Nuxt 3!
       </h1>
       <div class="links">
         <a
-          href="https://nuxtjs.org/"
+          href="https://docs.digitalocean.com/products/app-platform/getting-started/sample-apps/nuxt.js/"
           target="_blank"
           rel="noopener noreferrer"
           class="button--green"
@@ -15,7 +15,7 @@
           Documentation
         </a>
         <a
-          href="https://github.com/nuxt/nuxt.js"
+          href="https://github.com/digitalocean/sample-nuxtjs"
           target="_blank"
           rel="noopener noreferrer"
           class="button--grey"
@@ -27,8 +27,11 @@
   </div>
 </template>
 
-<script>
-export default {}
+<script setup>
+// Nuxt 3 script setup syntax
+definePageMeta({
+  title: 'Welcome to Nuxt 3'
+})
 </script>
 
 <style>

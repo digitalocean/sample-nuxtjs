@@ -2,19 +2,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  experimental: {
-    payloadExtraction: false
-  },
-  nitro: {
-    preset: 'static'
-  },
+  compatibilityDate: '2025-09-16',
   app: {
     head: {
-      title: process.env.npm_package_name || '',
+      title: 'Sample Nuxt.js App',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: process.env.npm_package_description || '' }
+        { name: 'description', content: 'A sample Nuxt.js application' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
